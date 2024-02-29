@@ -7,6 +7,9 @@ function Recipes() {
       <h1>Popular recipies</h1>
       <div className="row">
         <RecipeCard />
+        <RecipeCard />
+        <RecipeCard />
+        <RecipeCard />
       </div>
     </>
   );
