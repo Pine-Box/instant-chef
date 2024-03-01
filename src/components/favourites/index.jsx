@@ -41,25 +41,8 @@ const Favourites = ({ favourites, onRemove }) => {
           </button>
         )}
 
-        {/* {favourites.map((recipe) => (
-          <FavouriteCard
-            key={recipe.idMeal}
-            recipe={recipe}
-            onRemove={() => onRemove(recipe.idMeal)}
-          />
-        ))} */}
-        {/* <FavouriteCard/>
-            <FavouriteCard/>
-            <FavouriteCard/>
-            <FavouriteCard/> */}
-
-
-
-
       </div>
 
-
-      {/* Modal for View All */}
       <Modal
         isOpen={showModal}
         onRequestClose={closeModal}

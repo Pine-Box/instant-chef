@@ -20,7 +20,7 @@ function Recipes() {
       .catch((error) => {
         console.error("Error fetching random recipe:", error);
       });
-  }, []); // The empty dependency array ensures that the effect runs only once on mount
+  }, []); 
 
   const handleAddToFavourites = () => {
     if (!randomRecipe) {
