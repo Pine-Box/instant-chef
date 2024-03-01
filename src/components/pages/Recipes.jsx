@@ -14,7 +14,7 @@ function Recipes() {
     API.randomnMeal()
       .then((response) => {
         // Log the response data to the console
-        console.log(response.data);
+        // console.log(response.data);
 
         // Set the random recipe in the component state
         setRandomRecipe(response.data.meals[0]);
