@@ -11,6 +11,7 @@ const RecipeDetail = () => {
 	const [measures, setMeasures] = useState([]);
 	const ingredientsCount = ingredients.length;
 	const displayCount = Math.ceil(ingredientsCount / 2); // Show half of the records
+	const videoUrl = "";
 	const { id } = useParams();
 	useEffect(() => {
 		const fetchRecipeDetails = async () => {
@@ -43,13 +44,22 @@ const RecipeDetail = () => {
 						});
 					}
 				});
+				//  const vd=data.data.meals[0].strYoutube.split("watch?v=");
+				// videoUrl=vd.join("embed/");
+			 console.log(recipe.strYoutube);
+				// console.log("new " +videoUrl);
 			} catch (error) {
 				console.error(error);
 			}
 		};
 		fetchRecipeDetails();
 	}, [id]);
-
+	const updatevideoLink = (strVideo) => {
+		const oldLink = strVideo.split("watch?v=");
+		const videoUrl = oldLink.join("embed/");
+		console.log("new " + videoUrl);
+		return videoUrl;
+	};
 	return (
 		<div className="container">
 			<div className="wrapper">
@@ -76,7 +86,7 @@ const RecipeDetail = () => {
 					<iframe
 						width="560"
 						height="315"
-						src="https://www.youtube.com/embed/4aZr5hZXP_s" //{recipe.strYoutube}
+						src={recipe.strYoutube} //TODO: RESOLVE HOw to repalce watch with embeded/ </div> //"https://www.youtube.com/embed/4aZr5hZXP_s" //{recipe.strYoutube}
 						title="YouTube video player"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowFullScreen
