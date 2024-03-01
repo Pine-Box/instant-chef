@@ -1,43 +1,41 @@
 import axios from "axios";
 const BASEURL = "https://www.themealdb.com/api/json/v1/1";
 
+function searchRecipe(query) {
+	return axios.get(BASEURL + "/search.php?s=" + query);
+}
 
-  function searchRecipe(query) {
-    return axios.get(BASEURL + '/search.php?s=' + query);
-  }
+function mealLookUphById(query) {
+	return axios.get(BASEURL + "/lookup.php?i=" + query);
+}
 
-  function mealLookUphById(query) {
-    return axios.get(BASEURL + '/lookUphById?i=' + query);
-  }
+function mealCategoriesList(query) {
+	return axios.get(BASEURL + "/list.php?c=list");
+}
 
+function mealCountryList(query) {
+	return axios.get(BASEURL + "/list.php?a=list");
+}
 
-  function mealCategoriesList(query) {
-    return axios.get(BASEURL + '/list.php?c=list');
-  }
+function mealIngrecientList(query) {
+	return axios.get(BASEURL + "/list.php?i=list");
+}
 
-  function mealCountryList(query) {
-    return axios.get(BASEURL + '/list.php?a=list');
-  }
+function filterByCountry(query) {
+	return axios.get(BASEURL + "/filter.php?a=" + query);
+}
 
-  function mealIngrecientList(query) {
-    return axios.get(BASEURL + '/list.php?i=list');
-  }
+function filterByMainIngredients(query) {
+	return axios.get(BASEURL + "/filter.php?i=" + query);
+}
 
-  function filterByCountry(query) {
-    return axios.get(BASEURL + '/filter.php?a=' + query);
-  }
+function randomnMeal(query) {
+	return axios.get(BASEURL + "/random.php");
+}
 
-  function filterByMainIngredients(query) {
-    return axios.get(BASEURL + '/filter.php?i=' + query);
-  }
-
-  function randomnMeal(query) {
-    return axios.get(BASEURL + '/random.php');
-  } 
-
-  function filterByCatergory(query){
-    return axios.get(BASEURL + '/filter.php?c=' + query);  
-  }
+function filterByCatergory(query) {
+	return axios.get(BASEURL + "/filter.php?c=" + query);
+}
 
   export default {searchRecipe, 
            mealLookUphById,

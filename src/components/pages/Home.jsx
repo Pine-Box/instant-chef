@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Favourites from "../favourites";
+import React from "react";
+import HandleCountrySelect from "./CountrySelector";
 
 function Home() {
   const [favourites, setFavourites] = useState([]);
@@ -26,6 +28,7 @@ function Home() {
         favourites={favourites}
         onRemove={handleRemoveFromFavorites}
       />
+      <HandleCountrySelect />
     </>
   );
 }

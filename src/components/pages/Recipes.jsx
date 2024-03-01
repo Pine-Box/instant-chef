@@ -3,6 +3,7 @@ import API from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import RecipeCard from "../RecipeCard";
 
 function Recipes() {
   const [randomRecipe, setRandomRecipe] = useState(null);
@@ -20,7 +21,7 @@ function Recipes() {
       .catch((error) => {
         console.error("Error fetching random recipe:", error);
       });
-  }, []); 
+  }, []);
 
   const handleAddToFavourites = () => {
     if (!randomRecipe) {
@@ -48,31 +49,42 @@ function Recipes() {
     } else {
       console.log("Recipe is already in favourites:", randomRecipe);
     }
-
   };
 
   return (
-    <div>
-      <h2>Random Recipe</h2>
-      {randomRecipe ? (
-        <div className="card">
-          <img
-            src={randomRecipe.strMealThumb}
-            className="card-img-top"
-            alt={randomRecipe.strMeal}
-          />
-          <div className="card-body">
-            <h5 className="card-title">{randomRecipe.strMeal}</h5>
-            <p className="card-text">{randomRecipe.strInstructions}</p>
-            <button className="btn btn-primary" onClick={handleAddToFavourites}>
-              Add to Favourites
-            </button>
+    <>
+      <div>
+        <h2>Random Recipe</h2>
+        {randomRecipe ? (
+          <div className="card">
+            <img
+              src={randomRecipe.strMealThumb}
+              className="card-img-top"
+              alt={randomRecipe.strMeal}
+            />
+            <div className="card-body">
+              <h5 className="card-title">{randomRecipe.strMeal}</h5>
+              <p className="card-text">{randomRecipe.strInstructions}</p>
+              <button
+                className="btn btn-primary"
+                onClick={handleAddToFavourites}
+              >
+                Add to Favourites
+              </button>
+            </div>
           </div>
-        </div>
-      ) : (
-        <p>Loading random recipe...</p>
-      )}
-    </div>
+        ) : (
+          <p>Loading random recipe...</p>
+        )}
+      </div>
+      <h1>Popular recipies</h1>
+      <div className="row">
+        <RecipeCard />
+        <RecipeCard />
+        <RecipeCard />
+        <RecipeCard />
+      </div>
+    </>
   );
 }
 
