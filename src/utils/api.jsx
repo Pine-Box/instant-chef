@@ -39,10 +39,11 @@ const BASEURL = "https://www.themealdb.com/api/json/v1/1";
     return axios.get(BASEURL + '/filter.php?c=' + query);  
   }
 
-  export {searchRecipe, 
+  export default {searchRecipe, 
            mealLookUphById,
            mealCategoriesList, 
-           mealCategoriesList,
+           mealCountryList,
+           mealIngrecientList,
            filterByCountry,
            filterByMainIngredients,
            randomnMeal,
