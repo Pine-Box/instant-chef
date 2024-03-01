@@ -11,12 +11,11 @@ const RecipeDetail = () => {
 	const [measures, setMeasures] = useState([]);
 	const ingredientsCount = ingredients.length;
 	const displayCount = Math.ceil(ingredientsCount / 2); // Show half of the records
-	const URL_DETAILS = "lookup.php?i="; //"https://www.themealdb.com/api/json/v1/1/lookup.php?i="
 	const { id } = useParams();
 	useEffect(() => {
 		const fetchRecipeDetails = async () => {
 			try {
-				const data = await API.searchRecipe(`${URL_DETAILS}${id}`);
+				const data = await API.mealLookUphById(`${id}`);
 				// console.log(data.data.meals[0]);
 
 				setRecipe(data.data.meals[0]);
