@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import RecipeCard from "../RecipeCard";
+import RecipeDetail from "../RecipeDetail/RecipeDetail";
 
 function Recipes() {
   const [randomRecipe, setRandomRecipe] = useState(null);
@@ -84,6 +85,7 @@ function Recipes() {
         <RecipeCard />
         <RecipeCard />
       </div>
+      <RecipeDetail></RecipeDetail>
     </>
   );
 }
