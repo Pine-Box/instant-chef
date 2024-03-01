@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import RecipeDetail from "../RecipeDetail/RecipeDetail";
 
 function Recipes() {
-    return 
+	return (
+		<>
+			<RecipeDetail></RecipeDetail>
+		</>
+	);
 }
 
-export default Recipes
+export default Recipes;
