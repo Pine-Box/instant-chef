@@ -1,9 +1,55 @@
-import React from "react";
+import React, { useState } from "react"; // Import useState hook for state management
 import classNames from "classnames";
 import styles from "./Contact.module.css";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Card } from "react-bootstrap";
 
 const Contact = () => {
+  // state variable and setter function using useState hook
+  const [showChatModal, setShowChatModal] = useState(false);
+  const [showThrowModal, setShowThrowModal] = useState(false); // State for throw modal
+  // ChatModal
+  const ChatModal = () => (
+    <Modal show={showChatModal} onHide={() => setShowChatModal(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Message Us</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className="chat-container">
+          {/* Chat message history (optional) */}
+          <div className="chat-input">
+            <textarea
+              placeholder="Type your message here..."
+              rows="4"
+            ></textarea>
+            <button
+              className="send-button"
+              onClick={() => setShowThrowModal(true)}
+            >
+              THROW
+            </button>
+          </div>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+
+  // ThrowModal
+  const ThrowModal = () => (
+    <Modal show={showThrowModal} onHide={() => setShowThrowModal(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Throw Modal</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>We've received your message! Thank you for reaching out to us.</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="primary" onClick={() => setShowThrowModal(false)}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+
   return (
     <section id="contact" className="container mt-5">
       <div className="row">
@@ -67,6 +113,7 @@ const Contact = () => {
                     styles.uploadButton
                   )}
                   style={{ backgroundColor: "#007bff", marginLeft: "10px" }}
+                  onClick={() => setShowChatModal(true)} // Set modal visible on click
                 >
                   Upload Photos
                 </button>
@@ -75,9 +122,27 @@ const Contact = () => {
           </div>
         </div>
         <div className="col-lg-6">
-          {/* Content for the right container goes here */}
+          <div>
+            <Card>
+              <Card.Header> How To Contact Us </Card.Header>
+              <Card.Body>
+                <Card.Text> x.com/instant-chef </Card.Text>
+                <Card.Text> instant_chef@email.com </Card.Text>
+                <Card.Text> 07654 123456 </Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() => setShowChatModal(true)} // Set modal visible on click
+                >
+                  Chat with us!
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
         </div>
       </div>
+      {showChatModal && <ChatModal />}
+      {showThrowModal && <ThrowModal />}{" "}
+      {/* Render throw modal when state is true */}
     </section>
   );
 };
