@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import HandleCountrySelect from "./CountrySelector";
 
 function Home() {
-    return 
+  return (
+    <>
+      <HandleCountrySelect />
+    </>
+  );
 }
 
-export default Home
+export default Home;

@@ -54,7 +54,7 @@ const Contact = () => {
     <section id="contact" className="container mt-5">
       <div className="row">
         <div className="col-lg-6">
-          <div className={styles.text}>
+          <div className="">
             <h2 className="mt-5 text-center">Submit your own recipes!</h2>
             <form>
               <div className="mb-3">
@@ -96,22 +96,14 @@ const Contact = () => {
               <div className="text-center">
                 <button
                   type="submit"
-                  className={classNames(
-                    "btn",
-                    "btn-primary",
-                    styles.submitButton
-                  )}
+                  className={classNames("btn", "btn-primary")}
                   style={{ backgroundColor: "#007bff", marginLeft: "10px" }}
                 >
                   Submit
                 </button>
                 <button
                   type="button"
-                  className={classNames(
-                    "btn",
-                    "btn-primary",
-                    styles.uploadButton
-                  )}
+                  className={classNames("btn", "btn-primary")}
                   style={{ backgroundColor: "#007bff", marginLeft: "10px" }}
                   onClick={() => setShowChatModal(true)} // Set modal visible on click
                 >
