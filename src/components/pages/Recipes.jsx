@@ -1,12 +1,19 @@
 import React from "react";
-import RecipeDetail from "../RecipeDetail/RecipeDetail";
+import RecipeCard from "../RecipeCard";
 
 function Recipes() {
-	return (
-		<>
-			<RecipeDetail></RecipeDetail>
-		</>
-	);
+  return (
+    <>
+      <h1>Popular recipies</h1>
+      <div className="row">
+        <RecipeCard />
+        <RecipeCard />
+        <RecipeCard />
+        <RecipeCard />
+      </div>
+    </>
+  );
+
 }
 
 export default Recipes;
