@@ -11,7 +11,7 @@ const RecipeDetail = () => {
 	const [measures, setMeasures] = useState([]);
 	const ingredientsCount = ingredients.length;
 	const displayCount = Math.ceil(ingredientsCount / 2); // Show half of the records
-
+let urlsa=""// "https://www.youtube.com/embed/1IszT_guI08"
 	const { id } = useParams();
 	useEffect(() => {
 		const fetchRecipeDetails = async () => {
@@ -48,7 +48,10 @@ const RecipeDetail = () => {
 			}
 		};
 		fetchRecipeDetails();
+       
 	}, [id]);
+
+
 
 	return (
 		<div className="container">
@@ -74,14 +77,18 @@ const RecipeDetail = () => {
 					</div>
 				</div>
 				<div className="video-container">
-					<iframe
-						width="560"
-						height="315"
-						src={recipe.strYoutube} //TODO: RESOLVE HOw to repalce watch with embeded/ </div> //"https://www.youtube.com/embed/4aZr5hZXP_s" //{recipe.strYoutube}
-						title="YouTube video player"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowFullScreen
-					></iframe>
+					{recipe.strYoutube && (
+                            <iframe
+                              width="560"
+                              height="315"
+                              src={`https://www.youtube.com/embed/${
+                                recipe.strYoutube.split("watch?v=")[1]
+                              }`}
+                              title="YouTube video player"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            ></iframe>
+                          )}
 				</div>
 			</div>
 		</div>
