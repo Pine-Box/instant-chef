@@ -11,7 +11,7 @@ const RecipeDetail = () => {
 	const [measures, setMeasures] = useState([]);
 	const ingredientsCount = ingredients.length;
 	const displayCount = Math.ceil(ingredientsCount / 2); // Show half of the records
-let urlsa=""// "https://www.youtube.com/embed/1IszT_guI08"
+
 	const { id } = useParams();
 	useEffect(() => {
 		const fetchRecipeDetails = async () => {
