@@ -1,49 +1,64 @@
-import React, { useState } from "react"; // Import useState hook for state management
+import React, { useState } from "react";
 import classNames from "classnames";
 import styles from "./Contact.module.css";
 import { Modal, Button, Card } from "react-bootstrap";
+import { FaLinkedin, FaTiktok, FaInstagram } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Contact = () => {
-  // state variable and setter function using useState hook
   const [showChatModal, setShowChatModal] = useState(false);
-  const [showThrowModal, setShowThrowModal] = useState(false); // State for throw modal
-  // ChatModal
+  const [showThrowModal, setShowThrowModal] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowThrowModal(true);
+    setMessageSent(true);
+  };
+
+  const handleClose = () => {
+    setShowChatModal(false);
+    setShowThrowModal(false);
+    setMessageSent(false);
+  };
+
   const ChatModal = () => (
-    <Modal show={showChatModal} onHide={() => setShowChatModal(false)}>
+    <Modal show={showChatModal} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Message Us</Modal.Title>
+        <Modal.Title className={styles.modalTitle}>Message Us</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <div className="chat-container">
-          {/* Chat message history (optional) */}
-          <div className="chat-input">
+      <Modal.Body className={styles.modalBody}>
+        <div className={styles.chatContainer}>
+          <div className={styles.chatInput}>
             <textarea
+              className={classNames("form-control", styles.textarea)}
               placeholder="Type your message here..."
               rows="4"
             ></textarea>
-            <button
-              className="send-button"
-              onClick={() => setShowThrowModal(true)}
-            >
-              THROW
-            </button>
+            {!messageSent && (
+              <button
+                className={classNames("btn", "btn-primary", styles.sendButton)}
+                onClick={handleSubmit}
+              >
+                Send to us
+              </button>
+            )}
           </div>
         </div>
       </Modal.Body>
     </Modal>
   );
 
-  // ThrowModal
   const ThrowModal = () => (
-    <Modal show={showThrowModal} onHide={() => setShowThrowModal(false)}>
+    <Modal show={showThrowModal} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Throw Modal</Modal.Title>
+        <Modal.Title>Thanks for messaging us!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p>We've received your message! Thank you for reaching out to us.</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={() => setShowThrowModal(false)}>
+        <Button variant="primary" onClick={handleClose}>
           Close
         </Button>
       </Modal.Footer>
@@ -56,7 +71,7 @@ const Contact = () => {
         <div className="col-lg-6">
           <div className="">
             <h2 className="mt-5 text-center">Submit your own recipes!</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">
                   Recipe Name?
@@ -105,7 +120,7 @@ const Contact = () => {
                   type="button"
                   className={classNames("btn", "btn-primary")}
                   style={{ backgroundColor: "#007bff", marginLeft: "10px" }}
-                  onClick={() => setShowChatModal(true)} // Set modal visible on click
+                  onClick={() => setShowChatModal(true)}
                 >
                   Upload Photos
                 </button>
@@ -118,12 +133,57 @@ const Contact = () => {
             <Card>
               <Card.Header> How To Contact Us </Card.Header>
               <Card.Body>
-                <Card.Text> x.com/instant-chef </Card.Text>
-                <Card.Text> instant_chef@email.com </Card.Text>
-                <Card.Text> 07654 123456 </Card.Text>
+                <Card.Text>
+                  {" "}
+                  Our social:
+                  <div>
+                    <Button
+                      variant="primary"
+                      className={styles.socialButton}
+                      style={{ marginRight: "20px" }}
+                      href="https://www.linkedin.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLinkedin />
+                    </Button>
+                    <Button
+                      variant="primary"
+                      className={styles.socialButton}
+                      style={{ marginRight: "20px" }}
+                      href="https://www.tiktok.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaTiktok />
+                    </Button>
+                    <Button
+                      variant="primary"
+                      className={styles.socialButton}
+                      style={{ marginRight: "20px" }}
+                      href="https://www.instagram.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaInstagram />
+                    </Button>
+                    <Button
+                      variant="primary"
+                      className={styles.socialButton}
+                      style={{ marginRight: "20px" }}
+                      href="https://www.twitter.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <AiOutlineClose />
+                    </Button>
+                  </div>
+                </Card.Text>
+                <Card.Text> Email us at: instant_chef@email.com </Card.Text>
+                <Card.Text> Phone us on: 07654 123456 </Card.Text>
                 <Button
                   variant="primary"
-                  onClick={() => setShowChatModal(true)} // Set modal visible on click
+                  onClick={() => setShowChatModal(true)}
                 >
                   Chat with us!
                 </Button>
@@ -133,8 +193,12 @@ const Contact = () => {
         </div>
       </div>
       {showChatModal && <ChatModal />}
-      {showThrowModal && <ThrowModal />}{" "}
-      {/* Render throw modal when state is true */}
+      {showThrowModal && <ThrowModal />}
+      {messageSent && (
+        <div className={styles.successPrompt}>
+          Your recipe has successfully been submitted.
+        </div>
+      )}
     </section>
   );
 };
