@@ -28,9 +28,9 @@ function Suggestions() {
     if (!isAlreadyFavourite) {
       const updatedFavourites = [...favourites, randomRecipe];
       localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
-      console.log("Recipe added to favourites:", randomRecipe);
+      console.info("Recipe added to favourites:", randomRecipe);
     } else {
-      console.log("Recipe is already in favourites:", randomRecipe);
+      console.info("Recipe is already in favourites:", randomRecipe);
     }
   };
 
