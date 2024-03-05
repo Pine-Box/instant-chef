@@ -1,0 +1,32 @@
+.suggestions-container {
+  max-width: 100% !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+}
+
+.card {
+  max-width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.card-img-top {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.card-body {
+  flex: 1 !important;
+}
+
+.card-title {
+  margin-bottom: 5px !important;
+}
+
+.card-text {
+  margin-bottom: 10px !important;
+}
+
+.btn {
+  margin-top: 10px !important;
+}

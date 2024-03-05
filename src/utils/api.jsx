@@ -37,12 +37,13 @@ function filterByCatergory(query) {
 	return axios.get(BASEURL + "/filter.php?c=" + query);
 }
 
-export default {
-	searchRecipe,
-	mealLookUphById,
-	mealCategoriesList,
-	filterByCountry,
-	filterByMainIngredients,
-	randomnMeal,
-	filterByCatergory,
-};
+  export default {searchRecipe, 
+           mealLookUphById,
+           mealCategoriesList, 
+           mealCountryList,
+           mealIngrecientList,
+           filterByCountry,
+           filterByMainIngredients,
+           randomnMeal,
+           filterByCatergory
+          }

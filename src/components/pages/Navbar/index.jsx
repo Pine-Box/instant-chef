@@ -1,33 +1,22 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import './style.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./style.css";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Instant Chef
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <NavLink className="navbar-brand" to="/">
+          Instant Chef🍽️
+        </NavLink>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <NavLink
                 to="/"
                 end
                 className={({ isActive }) =>
-                  isActive ? 'nav-link active' : 'nav-link'
+                  isActive ? "nav-link active" : "nav-link"
                 }
               >
                 Home
@@ -37,7 +26,7 @@ function Navbar() {
               <NavLink
                 to="/recipes"
                 className={({ isActive }) =>
-                  isActive ? 'nav-link active' : 'nav-link'
+                  isActive ? "nav-link active" : "nav-link"
                 }
               >
                 Recipes
@@ -45,22 +34,23 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink
-                to="/suggestions"
-                className={({ isActive }) =>
-                  isActive ? 'nav-link active' : 'nav-link'
-                }
-              >
-                Suggestions
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  isActive ? 'nav-link active' : 'nav-link'
+                  isActive ? "nav-link active" : "nav-link"
                 }
               >
                 Contact
+              </NavLink>
+            </li>
+            <li className="nav-item position-relative">
+              <NavLink
+                to="/suggestions"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Not sure what to eat? Click here!
+                <div className="animated-arrow"></div>
               </NavLink>
             </li>
           </ul>

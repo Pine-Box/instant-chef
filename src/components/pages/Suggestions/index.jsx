@@ -1,22 +1,12 @@
-import React from "react";
-import API from "../../utils/api";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
-import RecipeCard from "../RecipeCard";
-import RecipeDetail from "../RecipeDetail/RecipeDetail";
+import React, { useEffect, useState } from "react";
+import API from "../../../utils/api";
 
-function Recipes() {
+function Suggestions() {
   const [randomRecipe, setRandomRecipe] = useState(null);
 
   useEffect(() => {
-    // Fetch a random recipe when the component mounts
     API.randomnMeal()
       .then((response) => {
-        // Log the response data to the console
-        console.log(response.data);
-
-        // Set the random recipe in the component state
         setRandomRecipe(response.data.meals[0]);
       })
       .catch((error) => {
@@ -26,26 +16,18 @@ function Recipes() {
 
   const handleAddToFavourites = () => {
     if (!randomRecipe) {
-      // Handle the case where there is no random recipe yet
       console.warn("No random recipe available.");
       return;
     }
 
-    // Retrieve existing favourites from local storage or initialize an empty array
     const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
-
-    // Check if the recipe is already in the favourites
     const isAlreadyFavourite = favourites.some(
       (favourite) => favourite.idMeal === randomRecipe.idMeal
     );
 
     if (!isAlreadyFavourite) {
-      // If not, add the recipe to the favourites array
       const updatedFavourites = [...favourites, randomRecipe];
-
-      // Update local storage with the new favourites list
       localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
-
       console.log("Recipe added to favourites:", randomRecipe);
     } else {
       console.log("Recipe is already in favourites:", randomRecipe);
@@ -53,21 +35,34 @@ function Recipes() {
   };
 
   return (
-    <>
-      <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      {" "}
+      {/* Center the card horizontally */}
+      <div style={{ maxWidth: "75%", padding: "10px" }}>
+        {" "}
+        {/* Adjust the maxWidth to make it 25% smaller */}
         <h2>Random Recipe</h2>
         {randomRecipe ? (
-          <div className="card">
+          <div
+            style={{
+              maxWidth: "100%",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <img
               src={randomRecipe.strMealThumb}
-              className="card-img-top"
+              style={{ maxWidth: "100%", height: "auto" }}
               alt={randomRecipe.strMeal}
             />
-            <div className="card-body">
-              <h5 className="card-title">{randomRecipe.strMeal}</h5>
-              <p className="card-text">{randomRecipe.strInstructions}</p>
+            <div style={{ flex: 1 }}>
+              <h5 style={{ marginBottom: "5px" }}>{randomRecipe.strMeal}</h5>
+              <p style={{ marginBottom: "10px" }}>
+                {randomRecipe.strInstructions}
+              </p>
               <button
                 className="btn btn-primary"
+                style={{ marginTop: "10px" }}
                 onClick={handleAddToFavourites}
               >
                 Add to Favourites
@@ -78,16 +73,8 @@ function Recipes() {
           <p>Loading random recipe...</p>
         )}
       </div>
-      <h1>Popular recipies</h1>
-      <div className="row">
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-      </div>
-      <RecipeDetail></RecipeDetail>
-    </>
+    </div>
   );
 }
 
-export default Recipes;
+export default Suggestions;

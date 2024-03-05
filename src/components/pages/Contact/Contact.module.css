@@ -1,0 +1,41 @@
+.modalTitle {
+  color: #007bff;
+}
+
+.modalBody {
+  background-color: #f8f9fa;
+}
+
+.chatContainer {
+  margin-top: 20px;
+}
+
+.chatInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea {
+  margin-bottom: 10px;
+}
+
+.sendButton {
+  background-color: red !important;
+  margin-top: 10px;
+}
+
+.successMessage {
+  text-align: center !important;
+}
+
+button {
+  background-color: red !important;
+  border-color: red !important;
+}
+
+.socialButton {
+  color: black !important;
+  background-color: white !important;
+  border-color: white !important;
+  font-size: 34px !important;
+}

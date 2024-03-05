@@ -1,3 +1,55 @@
 .navbar {
   border-radius: 10px;
 }
+
+.navbar-brand {
+  font-weight: 900;
+  font-size: 30px !important;
+  color: red !important;
+}
+
+.nav-item {
+  font-weight: 700;
+}
+
+nav.navbar {
+  background: #ffffff !important;
+  border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+  border-bottom: 5px solid red;
+}
+
+nav.nav-link {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+
+.btn-search {
+  background-color: red !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  border-color: red !important;
+}
+
+.animated-arrow {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) rotate(180deg);
+  width: 20px;
+  height: 20px;
+  border: solid 2px red;
+  border-width: 0 7px 2px 0;
+  display: inline-block;
+  padding: 5px;
+  animation: arrowAnimation 1s infinite alternate;
+}
+
+@keyframes arrowAnimation {
+  from {
+    transform: translateY(-50%) rotate(160deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(90deg);
+  }
+}
