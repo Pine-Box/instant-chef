@@ -1,11 +1,9 @@
 import React from "react";
 import "./style.css";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
+
 
 const Favourites = () => {
-    let recipe = {};
+    let recipe = [];
     let ingredients = [];
     let measures = [];
     const ingredientsCount = ingredients.length;
@@ -71,6 +69,7 @@ const Favourites = () => {
 
     const fetchRecipeDetails = () => {
         try {
+
             let meals = localStorage.getItem("favourites");
 
 
@@ -111,29 +110,20 @@ const Favourites = () => {
     fetchRecipeDetails();
 
     return (
-        <div className="container">
-            <div className="wrapper">
-                <h2>Recipe Details</h2>
-                <div className="recipe">
-                    <img src={recipe.strMealThumb} />
-                    <div className="metadata">Title: {recipe.strMeal}</div>
-                    <h3>Ingredients and measures</h3>
-                    <div className="ingredients">
-                        {ingredients.map((ingredient, i) => (
-                            <div key={ingredient} className="ingredient">
-                                <span>{measures[i]}</span> <span>{ingredient}</span>
-                            </div>
-                        ))}
-                    </div>
-                    <div>
-                        <h2>Instructions</h2>
-
-                        <p>{recipe.strInstructions}</p>
-                    </div>
+          <div>
+            <h2>Favourites</h2>
+              <div className="card">
+                <img
+                  src={recipe.strMealThumb}
+                  className="card-img-top"
+                  alt={recipe.strMeal}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{recipe.strMeal}</h5>
+                  <p className="card-text">{recipe.strInstructions}</p>
                 </div>
-            </div>
-        </div>
-
-    )
+              </div>
+          </div>
+      );
 };
 export default Favourites;
