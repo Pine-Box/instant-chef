@@ -2,6 +2,7 @@ import React from "react";
 
 const RecipeCard = ({ recipe }) => {
   //   const { idMeal, strMeal, strCategory, strMealThumb } = recipe;
+  
   return (
     <div className="col-sm-3">
       <div className="card">
