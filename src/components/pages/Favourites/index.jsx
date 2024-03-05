@@ -6,8 +6,6 @@ const Favourites = () => {
     let recipe = [];
     let ingredients = [];
     let measures = [];
-    const ingredientsCount = ingredients.length;
-    let displayCount = Math.ceil(ingredientsCount / 2); // Show half of the records
     const mealtestdata = [
         {
             "idMeal": "52771",
@@ -75,7 +73,6 @@ const Favourites = () => {
 
             if ((meals == undefined) || (meals == "")) {
                 localStorage.setItem("favourites", JSON.stringify(mealtestdata));
-                console.log('no local storage')
             }
 
             meals = JSON.parse(localStorage.getItem("favourites"));
