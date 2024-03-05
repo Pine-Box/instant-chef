@@ -1,27 +1,23 @@
-import React from "react";
-import API from "../../utils/api";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RecipeCard from "../RecipeCard";
 import RecipeDetail from "../RecipeDetail/RecipeDetail";
+import API from "../../utils/api";
 
 function Recipes() {
-  const [randomRecipe, setRandomRecipe] = useState(null);
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    // Fetch a random recipe when the component mounts
-    API.randomnMeal()
-      .then((response) => {
-        // Log the response data to the console
-        console.log(response.data);
-
-        // Set the random recipe in the component state
-        setRandomRecipe(response.data.meals[0]);
-      })
-      .catch((error) => {
-        console.error("Error fetching random recipe:", error);
-      });
+    const fetchRandomRecipes = async () => {
+      try {
+        const responses = [];
+        for (let i = 0; i < 4; i++) {
+          const resp = await API.randomnMeal();
+          responses.push(resp.data.meals[0]);
+        }
+        setRecipes(responses);
+      } catch (error) {}
+    };
+    fetchRandomRecipes();
   }, []);
 
   const handleAddToFavourites = () => {
@@ -54,36 +50,13 @@ function Recipes() {
 
   return (
     <>
-      <div>
-        <h2>Random Recipe</h2>
-        {randomRecipe ? (
-          <div className="card">
-            <img
-              src={randomRecipe.strMealThumb}
-              className="card-img-top"
-              alt={randomRecipe.strMeal}
-            />
-            <div className="card-body">
-              <h5 className="card-title">{randomRecipe.strMeal}</h5>
-              <p className="card-text">{randomRecipe.strInstructions}</p>
-              <button
-                className="btn btn-primary"
-                onClick={handleAddToFavourites}
-              >
-                Add to Favourites
-              </button>
-            </div>
-          </div>
-        ) : (
-          <p>Loading random recipe...</p>
-        )}
-      </div>
       <h1>Popular recipies</h1>
       <div className="row">
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
+        {recipes.length === 4 &&
+          recipes.map((recipe) => {
+            console.log(recipe);
+            return <RecipeCard recipe={recipe} />;
+          })}
       </div>
       <RecipeDetail></RecipeDetail>
     </>
