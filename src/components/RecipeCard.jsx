@@ -16,7 +16,6 @@ const RecipeCard = ({ recipe }) => {
           <h3>{strMeal}</h3>
           <a
             href={"https://www.themealdb.com/meal/" + idMeal}
-            href="https://www.themealdb.com/meal/"
             target="_blank"
             rel="noreferrer"
           >
