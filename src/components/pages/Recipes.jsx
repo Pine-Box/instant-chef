@@ -5,6 +5,7 @@ import API from "../../utils/api";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
+  const currentPath = window.location.pathname;
 
   useEffect(() => {
     const fetchRandomRecipes = async () => {
@@ -20,8 +21,8 @@ function Recipes() {
     fetchRandomRecipes();
   }, []);
 
-  const handleAddToFavourites = () => {
-    if (!randomRecipe) {
+  const handleAddToFavourites = (recipe) => {
+    if (!recipe) {
       // Handle the case where there is no random recipe yet
       console.warn("No random recipe available.");
       return;
@@ -32,19 +33,19 @@ function Recipes() {
 
     // Check if the recipe is already in the favourites
     const isAlreadyFavourite = favourites.some(
-      (favourite) => favourite.idMeal === randomRecipe.idMeal
+      (favourite) => favourite.idMeal === recipe.idMeal
     );
 
     if (!isAlreadyFavourite) {
       // If not, add the recipe to the favourites array
-      const updatedFavourites = [...favourites, randomRecipe];
+      const updatedFavourites = [...favourites, recipe];
 
       // Update local storage with the new favourites list
       localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
 
-      console.log("Recipe added to favourites:", randomRecipe);
+      console.info("Recipe added to favourites:", recipe);
     } else {
-      console.log("Recipe is already in favourites:", randomRecipe);
+      console.info("Recipe is already in favourites:", recipe);
     }
   };
 
@@ -54,11 +55,16 @@ function Recipes() {
       <div className="row">
         {recipes.length === 4 &&
           recipes.map((recipe) => {
-            console.log(recipe);
-            return <RecipeCard recipe={recipe} />;
+            return (
+              <RecipeCard
+                key={recipe.idMeal}
+                recipe={recipe}
+                addToFav={handleAddToFavourites}
+              />
+            );
           })}
       </div>
-      <RecipeDetail></RecipeDetail>
+      {currentPath === "/recipes" && <RecipeDetail />}
     </>
   );
 }
