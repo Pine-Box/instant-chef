@@ -49,9 +49,19 @@ To run this project locally, follow these steps:
 
 ## Screenshots
 
+![home-ss](./src/assets/images/home-ss.png)
+![search-ss](./src/assets/images/search-ss.png)
+
 ## Future Development
 
 In the future, we plan to add more features to this application, including:
+
+- Adding Logo: We can add logo instead of text
+- Add Categories: We can add more categories
+- Filtering Options: We can add more filtering options such as ingredients. This would help users narrow down their choices based on their preferences.
+- Meal Planner: We can make a meal planner where users can schedule meals for specific days or create meal plans for the week.
+- Shopping List: Users could generate shopping lists based on their meal plans.
+- Social Sharing: We can allow users to share their favourite meals or meal plans with friends and family on social media platforms.
 
 ## Application repository
 
@@ -59,7 +69,7 @@ The source code for this application is hosted on GitHub. You can access the rep
 
 ## Deployment
 
-The application is deployed on Netlify. You can access it here.
+The application is deployed on Netlify. You can access it [here](https://netlify.com)
 
 ## Collaboration - Team Members
 
@@ -73,12 +83,3 @@ Here are the GitHub accounts of all the members of our team:
 - [Dan Sora](https://github.com/dansora)
 - [Eddington](https://github.com/eampofu)
 - [Huseyin](https://github.com/6nhuseyin)
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
