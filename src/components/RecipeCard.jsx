@@ -29,7 +29,7 @@ const RecipeCard = ({ recipe, addToFav }) => {
                 addToFav(recipe);
               }}
             >
-              Add To Favourites
+              +Favourites
             </button>
           </div>
         </div>
