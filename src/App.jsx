@@ -7,7 +7,8 @@ import Contact from "./components/pages/Contact";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import RecipeCard from "./components/RecipeCard";
 import RecipeSearch from "./components/pages/RecipeSearch";
-import RecipeDetail from "./components/RecipeDetail/RecipeDetail";
+import RecipeDetail from "./components/RecipeDetail";
+
 
 function App() {
   return (

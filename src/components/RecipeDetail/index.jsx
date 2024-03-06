@@ -1,5 +1,6 @@
 import React from "react";
-import "./style.css";
+
+import "./../RecipeDetail/style.css";
 import API from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -55,7 +56,7 @@ const RecipeDetail = () => {
 			<div className="wrapper">
 				<h2>{recipe?.strMeal}</h2>
 				<div className="recipe">
-					<img src={recipe?.strMealThumb} className="image-size" />
+					<img src={recipe?.strMealThumb} />
 
 					<h3>Ingredients</h3>
 					<div className="ingredients">
