@@ -18,19 +18,20 @@
     color: #FF0000;
     font-size: 32px;
     margin-bottom: 2.5rem;
+    
 }
 
 .recipe > img{
     width: 100%;
-    height: 700px;
+    height: 300px;
     object-fit: cover;
     margin-bottom: 2rem;
 }
 
 .metadata{
-    display: flex;
+     display: flex;
     gap: 1.5rem;
-    align-items: center;
+   align-items: center;
     font-size: 22px;
     margin: 2rem 0;
     margin-bottom: 3rem;
