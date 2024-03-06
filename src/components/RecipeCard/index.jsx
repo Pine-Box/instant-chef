@@ -15,14 +15,7 @@ const RecipeCard = ({ recipe, addToFav }) => {
 						<Link to={`/recipe/${recipe.idMeal}`} className="btn btn-secondary">
 							Ingredients
 						</Link>
-						{/* <a
-              href={"https://www.themealdb.com/meal/" + idMeal}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-secondary"
-            >
-              Ingredients
-            </a> */}
+
 						<button
 							className="btn btn-primary"
 							onClick={() => {
