@@ -7,7 +7,7 @@ const handleCountrySelect = () => {
   const [recipies, setRecipies] = useState([]); // this is the array to store the recipies
 
   const countriesUrl = "https://restcountries.com/v3.1/all"; // API endpoint for countries
-  const recipiesByCountryUrl = "www.themealdb.com/api/json/v1/1/filter.php?a=" // API endpoint for recipies by country
+  const recipiesByCountryUrl = "www.themealdb.com/api/json/v1/1/filter.php?a="; // API endpoint for recipies by country
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -20,12 +20,14 @@ const handleCountrySelect = () => {
   useEffect(() => {
     const fetchRecipies = async () => {
       if (selectedCountry) {
-        const response = await axios.get(`${recipiesByCountryUrl}${selectedCountry}`);
+        const response = await axios.get(
+          `${recipiesByCountryUrl}${selectedCountry}`
+        );
         setRecipies(response.data.meals || []); // updates the recipies or set an empty array
       }
     };
     fetchRecipies();
-  },[selectedCountry]); // run only when selected country changes
+  }, [selectedCountry]); // run only when selected country changes
 
   const handleChanges = (e) => {
     selectedCountry(e.target.value);
@@ -33,11 +35,11 @@ const handleCountrySelect = () => {
 
   return (
     <div className="container">
-      <select value={{selectedCountry} onChange={handleChanges}>
+      <select value={selectedCountry} onChange={handleChanges}>
         <option value="">Select Country</option>
         {countries.map((country) => (
           <option key={country} value={country}>
-          {country}
+            {country}
           </option>
         ))}
       </select>
@@ -48,7 +50,7 @@ const handleCountrySelect = () => {
             <RecipeCard key={recipe.idMeal} recipe={recipe} />
           ))}
         </div>
-      )}  
+      )}
     </div>
   );
 };
