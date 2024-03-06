@@ -18,19 +18,19 @@ const RecipeDetail = () => {
 			try {
 				const data = await API.mealLookUphById(`${id}`);
 
-				setRecipe(data.data.meals[0]);
+        setRecipe(data.data.meals[0]);
 
-				Object.keys(data.data.meals[0]).forEach((key) => {
-					if (
-						key.includes("strIngredient") &&
-						data.data.meals[0][key] !== "" &&
-						data.data.meals[0][key] !== null
-					) {
-						setIngredients((prev) => {
-							if (prev.length === 0) return [data.data.meals[0][key]];
-							else return [...prev, data.data.meals[0][key]];
-						});
-					}
+        Object.keys(data.data.meals[0]).forEach((key) => {
+          if (
+            key.includes("strIngredient") &&
+            data.data.meals[0][key] !== "" &&
+            data.data.meals[0][key] !== null
+          ) {
+            setIngredients((prev) => {
+              if (prev.length === 0) return [data.data.meals[0][key]];
+              else return [...prev, data.data.meals[0][key]];
+            });
+          }
 
 					if (
 						key.includes("strMeasure") &&
