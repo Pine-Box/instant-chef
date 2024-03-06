@@ -34,6 +34,26 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink
+                to="/suggestions"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Suggestions
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/favourites"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Favourites
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
                 to="/contact"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"

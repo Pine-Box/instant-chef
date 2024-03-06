@@ -1,14 +1,15 @@
 import React from "react";
+import "./style.css";
+
 
 const RecipeCard = ({ recipe, addToFav }) => {
   const { idMeal, strMeal, strCategory, strMealThumb } = recipe;
   return (
-    <div className="col-sm-3">
-      <div className="card">
+    <div className="col-sm-3 card-deck">
+      <div className="card center-text">
         <img
           src={strMealThumb}
-          alt="..."
-          style={{ objectFit: "cover", width: "100%" }}
+
           className="card-image"
         />
         <div className="card-body">
