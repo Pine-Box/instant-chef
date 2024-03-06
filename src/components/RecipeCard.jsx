@@ -18,10 +18,9 @@ const RecipeCard = ({ recipe, addToFav }) => {
 					<h3>{strMeal}</h3>
 					<div className="d-flex justify-content-evenly align-items-center w-100">
 						<Link to={`/recipe/${idMeal}`} className="btn btn-secondary">
-							{/* <img src={recipe.strMealThumb} /> */}
 							Ingredients
 						</Link>
-				
+
 						<button
 							className="btn btn-primary"
 							onClick={() => {
