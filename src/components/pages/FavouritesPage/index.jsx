@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Favourites from "../../favourites";
+import RecipeCard from "../../RecipeCard";
 import "./style.css";
 
 
@@ -24,12 +24,18 @@ function FavouritesPage(){
 
 
     return (
-      <>
-      <Favourites
-        favourites={favourites}
-        onRemove={handleRemoveFromFavorites}
-      />
-    </>
+      <div className="row m-3">
+        {
+          favourites.map((recipe)  => {
+            return (
+              <RecipeCard
+                key={recipe.idMeal}
+                recipe={recipe}
+                addToFav={handleRemoveFromFavorites}
+              />
+            );
+          })}
+      </div>
       );
 };
 export default FavouritesPage;
