@@ -7,6 +7,8 @@ import Contact from "./components/pages/Contact";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import RecipeCard from "./components/RecipeCard";
 import RecipeSearch from "./components/pages/RecipeSearch";
+import RecipeDetail from "./components/RecipeDetail";
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="suggestions" element={<Suggestions />} />
           <Route path="/favourites" element={<FavouritesPage />} />
           <Route path="contact" element={<Contact />} />
+          <Route path='/recipe/:id' element={<RecipeDetail /> } />
         </Routes>
       </Router>
     </div>

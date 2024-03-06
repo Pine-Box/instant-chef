@@ -15,26 +15,27 @@
 }
 
 .wrapper > h2{
-    color: #d78b21;
+    color: #FF0000;
     font-size: 32px;
     margin-bottom: 2.5rem;
+    
 }
 
 .recipe > img{
     width: 100%;
-    height: 700px;
+    height: 100px;
     object-fit: cover;
     margin-bottom: 2rem;
 }
 
 .metadata{
-    display: flex;
+     display: flex;
     gap: 1.5rem;
-    align-items: center;
+   align-items: center;
     font-size: 22px;
     margin: 2rem 0;
     margin-bottom: 3rem;
-    background-color: #d78b21;
+    background-color: #FF0000;
     color: #efefef;
     padding: 0.25rem 0.75rem;
     width: max-content;
@@ -44,7 +45,7 @@
 .recipe > h3{
     margin-bottom: 2.5rem;
     text-align: center;
-    color: #d78b21;
+    color: #FF0000;
     font-size: 24px;
     font-weight: 500;
 }
@@ -61,3 +62,4 @@
     gap: 1.5rem;
     align-items: center;
 }
+
