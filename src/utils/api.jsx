@@ -38,8 +38,12 @@ function filterByCatergory(query) {
 }
 
 function getPopularMeals() {
-  return axios.get(`${BASEURL}/randomselection.php`);
+  return axios.get(`${BASEURL}/random.php`);
 }
+
+
+
+
 
 export default {
   searchRecipe,

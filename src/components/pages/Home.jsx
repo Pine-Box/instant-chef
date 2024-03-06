@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Favourites from "../favourites";
+import React, { useEffect, useState } from "react";;
 import HandleCountrySelect from "./CountrySelector";
-import RecipeCard from "../RecipeCard";
 import Recipes from "./Recipes";
+import RecipesByCategory from "../RecipesByCategory";
+import RecipesByCountry from "../RecipesByCountry";
 
 function Home() {
   const [favourites, setFavourites] = useState([]);
@@ -25,12 +25,9 @@ function Home() {
 
   return (
     <>
-      <Favourites
-        favourites={favourites}
-        onRemove={handleRemoveFromFavorites}
-      />
       <Recipes />
-      <HandleCountrySelect />
+      <RecipesByCategory />
+      <RecipesByCountry />
     </>
   );
 }
