@@ -28,9 +28,9 @@ function Suggestions() {
     if (!isAlreadyFavourite) {
       const updatedFavourites = [...favourites, randomRecipe];
       localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
-      console.log("Recipe added to favourites:", randomRecipe);
+      console.info("Recipe added to favourites:", randomRecipe);
     } else {
-      console.log("Recipe is already in favourites:", randomRecipe);
+      console.info("Recipe is already in favourites:", randomRecipe);
     }
   };
 
@@ -41,7 +41,9 @@ function Suggestions() {
       <div style={{ maxWidth: "75%", padding: "10px" }}>
         {" "}
         {/* Adjust the maxWidth to make it 25% smaller */}
-        <h2>Random Recipe</h2>
+        <h2 style={{ textAlign: "center", padding: "50px 0" }}>
+          Give this recipe a go!
+        </h2>
         {randomRecipe ? (
           <div
             style={{

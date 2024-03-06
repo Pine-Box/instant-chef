@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";;
-import HandleCountrySelect from "./CountrySelector";
-import Recipes from "./Recipes";
-import RecipesByCategory from "../RecipesByCategory";
-import RecipesByCountry from "../RecipesByCountry";
+import React, { useEffect, useState } from "react";
+import Favourites from "../../favourites";
+import "./style.css";
 
-function Home() {
+
+function FavouritesPage(){
   const [favourites, setFavourites] = useState([]);
 
   // Fetch favorite recipes from local storage
@@ -21,15 +20,16 @@ function Home() {
     );
     setFavourites(updatedFavourites);
     localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
-  };
+    };
 
-  return (
-    <>
-      <Recipes />
-      <RecipesByCategory />
-      <RecipesByCountry />
+
+    return (
+      <>
+      <Favourites
+        favourites={favourites}
+        onRemove={handleRemoveFromFavorites}
+      />
     </>
-  );
-}
-
-export default Home;
+      );
+};
+export default FavouritesPage;
