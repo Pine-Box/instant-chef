@@ -69,7 +69,7 @@ The source code for this application is hosted on GitHub. You can access the rep
 
 ## Deployment
 
-The application is deployed on Netlify. You can access it [here](https://netlify.com)
+The application is deployed on Netlify. You can access it [here](https://meek-treacle-e73351.netlify.app/)
 
 ## Collaboration - Team Members
 
