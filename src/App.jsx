@@ -6,6 +6,7 @@ import Suggestions from "./components/pages/Suggestions";
 import Contact from "./components/pages/Contact";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import RecipeCard from "./components/RecipeCard";
+import RecipeSearch from "./components/pages/RecipeSearch";
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/recipes/*" element={<Recipes />} />
-          <Route path="/suggestions" element={<Suggestions />} />
-		      <Route path="/favourites" element={<FavouritesPage />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="recipes/*" element={<Recipes />} />
+          <Route path="recipesearch" element={<RecipeSearch />} />
+          <Route path="suggestions" element={<Suggestions />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="contact" element={<Contact />} />
         </Routes>
       </Router>
     </div>
