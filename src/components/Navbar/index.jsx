@@ -22,16 +22,16 @@ function Navbar() {
                 Home
               </NavLink>
             </li>
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <NavLink
-                to="/recipes"
+                to="/RecipeSearch"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }
               >
-                Recipes
+                Recipes Search
               </NavLink>
-            </li> */}
+            </li>
             <li className="nav-item">
               <NavLink
                 to="/favourites"
