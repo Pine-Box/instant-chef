@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/pages/Navbar";
+import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home";
 import Recipes from "./components/pages/Recipes";
 import Suggestions from "./components/pages/Suggestions";
 import Contact from "./components/pages/Contact";
+import FavouritesPage from "./components/pages/FavouritesPage";
 import RecipeCard from "./components/RecipeCard";
 import RecipeSearch from "./components/pages/RecipeSearch";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="recipes/*" element={<Recipes />} />
           <Route path="recipesearch" element={<RecipeSearch />} />
           <Route path="suggestions" element={<Suggestions />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
           <Route path="contact" element={<Contact />} />
         </Routes>
       </Router>
