@@ -1,31 +1,28 @@
-import React from "react";
-import API from "../../utils/api";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RecipeCard from "../RecipeCard";
 import RecipeDetail from "../RecipeDetail/RecipeDetail";
+import API from "../../utils/api";
 
 function Recipes() {
-  const [randomRecipe, setRandomRecipe] = useState(null);
+  const [recipes, setRecipes] = useState([]);
+  const currentPath = window.location.pathname;
 
   useEffect(() => {
-    // Fetch a random recipe when the component mounts
-    API.randomnMeal()
-      .then((response) => {
-        // Log the response data to the console
-        console.log(response.data);
-
-        // Set the random recipe in the component state
-        setRandomRecipe(response.data.meals[0]);
-      })
-      .catch((error) => {
-        console.error("Error fetching random recipe:", error);
-      });
+    const fetchRandomRecipes = async () => {
+      try {
+        const responses = [];
+        for (let i = 0; i < 4; i++) {
+          const resp = await API.randomnMeal();
+          responses.push(resp.data.meals[0]);
+        }
+        setRecipes(responses);
+      } catch (error) {}
+    };
+    fetchRandomRecipes();
   }, []);
 
-  const handleAddToFavourites = () => {
-    if (!randomRecipe) {
+  const handleAddToFavourites = (recipe) => {
+    if (!recipe) {
       // Handle the case where there is no random recipe yet
       console.warn("No random recipe available.");
       return;
@@ -36,56 +33,38 @@ function Recipes() {
 
     // Check if the recipe is already in the favourites
     const isAlreadyFavourite = favourites.some(
-      (favourite) => favourite.idMeal === randomRecipe.idMeal
+      (favourite) => favourite.idMeal === recipe.idMeal
     );
 
     if (!isAlreadyFavourite) {
       // If not, add the recipe to the favourites array
-      const updatedFavourites = [...favourites, randomRecipe];
+      const updatedFavourites = [...favourites, recipe];
 
       // Update local storage with the new favourites list
       localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
 
-      console.log("Recipe added to favourites:", randomRecipe);
+      console.info("Recipe added to favourites:", recipe);
     } else {
-      console.log("Recipe is already in favourites:", randomRecipe);
+      console.info("Recipe is already in favourites:", recipe);
     }
   };
 
   return (
     <>
-      <div>
-        <h2>Random Recipe</h2>
-        {randomRecipe ? (
-          <div className="card">
-            <img
-              src={randomRecipe.strMealThumb}
-              className="card-img-top"
-              alt={randomRecipe.strMeal}
-            />
-            <div className="card-body">
-              <h5 className="card-title">{randomRecipe.strMeal}</h5>
-              <p className="card-text">{randomRecipe.strInstructions}</p>
-              <button
-                className="btn btn-primary"
-                onClick={handleAddToFavourites}
-              >
-                Add to Favourites
-              </button>
-            </div>
-          </div>
-        ) : (
-          <p>Loading random recipe...</p>
-        )}
-      </div>
       <h1>Popular recipies</h1>
       <div className="row">
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
+        {recipes.length === 4 &&
+          recipes.map((recipe) => {
+            return (
+              <RecipeCard
+                key={recipe.idMeal}
+                recipe={recipe}
+                addToFav={handleAddToFavourites}
+              />
+            );
+          })}
       </div>
-      <RecipeDetail></RecipeDetail>
+      {currentPath === "/recipes" && <RecipeDetail />}
     </>
   );
 }

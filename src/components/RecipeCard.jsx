@@ -1,27 +1,37 @@
 import React from "react";
 
-const RecipeCard = ({ recipe }) => {
-  //   const { idMeal, strMeal, strCategory, strMealThumb } = recipe;
+const RecipeCard = ({ recipe, addToFav }) => {
+  const { idMeal, strMeal, strCategory, strMealThumb } = recipe;
   return (
     <div className="col-sm-3">
       <div className="card">
         <img
-          src="./src/assets/images/pexels-ella-olsson-1640777.jpg"
+          src={strMealThumb}
           alt="..."
           style={{ objectFit: "cover", width: "100%" }}
           className="card-image"
         />
         <div className="card-body">
-          <span className="category">Category</span>
-          <h3>Meal</h3>
-          <a
-            //   href={"https://www.themealdb.com/meal/" + idMeal}
-            href="https://www.themealdb.com/meal/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Ingredients
-          </a>
+          <span className="category">{strCategory}</span>
+          <h3>{strMeal}</h3>
+          <div className="d-flex justify-content-evenly align-items-center w-100">
+            <a
+              href={"https://www.themealdb.com/meal/" + idMeal}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-secondary"
+            >
+              Ingredients
+            </a>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                addToFav(recipe);
+              }}
+            >
+              Add To Favourites
+            </button>
+          </div>
         </div>
       </div>
     </div>
